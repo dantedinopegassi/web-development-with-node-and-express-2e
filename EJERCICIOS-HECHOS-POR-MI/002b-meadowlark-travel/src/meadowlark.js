@@ -12,6 +12,8 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
+app.use(express.static(__dirname + "/public"))
+
 
 app.get("/", (req, res) => {
   res.type("text/plain");
