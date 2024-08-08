@@ -1,6 +1,6 @@
 const express = require("express");
 const expresshandlebars = require("express-handlebars");
-const { getFortune } = require("./modules/fortune");
+const handlers = require("./modules/handlers");
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -28,26 +28,36 @@ app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
 
-app.get("/", (req, res) => {
+/******************************************** /
+/  Asi se refactoriza codigo para             /
+/  volverlo modular y poder testearlo         /
+/ ********************************************/
+
+app.get("/", /*handlers.home */
+  (req, res) => {
   res.type("text/plain");
   res.send("chupala yastin");
 });
 
-app.get("/about", (req, res) => {
+app.get("/about", handlers.about
+  /*(req, res) => {
   res.render("about", { fortune: getFortune() });
-});
+} */
+);
 
-app.use((req, res) => {
+app.use(/*handlers.notFound */
+  (req, res) => {
   res.type("text/plain");
   res.status(404);
   res.send("404 - Not he encontrado");
 });
 
-app.use((err, req, res, next) => {
+app.use(handlers.serverError
+  /*(err, req, res, next) => {
   res.type("text/plain");
   res.status(500);
   res.send("500 - Server error");
-});
+} */);
 
 app.listen(port, () => {
   console.log(
