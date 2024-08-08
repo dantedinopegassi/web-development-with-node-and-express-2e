@@ -3,5 +3,11 @@
     "express": "^4.19.2",
     "express-handlebars": "^7.1.3"
   },
-  "main": "src/meadowlark.js"
+  "main": "src/meadowlark.js",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "scripts":{
+    "test": "jest"
+  }
 }

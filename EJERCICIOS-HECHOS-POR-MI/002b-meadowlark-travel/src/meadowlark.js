@@ -1,8 +1,22 @@
 const express = require("express");
 const expresshandlebars = require("express-handlebars");
+const { getFortune } = require("./modules/fortune");
 const port = process.env.PORT || 3000;
 
 const app = express();
+
+/******************************************** /
+/  Este coso                                  /
+/            va a parar a su                  /
+/                            propio modulo    /
+/ ********************************************/
+// const fortunes = [
+//   "Conquer your fears or they will conquer you.",
+//   "Rivers need springs.",
+//   "Do not fear what you don't know.",
+//   "You will have a pleasant surprise.",
+//   "Whenever possible, keep it simple.",
+// ];
 
 app.engine(
   "handlebars",
@@ -12,8 +26,7 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
-app.use(express.static(__dirname + "/public"))
-
+app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
   res.type("text/plain");
@@ -21,7 +34,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { fortune: getFortune() });
 });
 
 app.use((req, res) => {
