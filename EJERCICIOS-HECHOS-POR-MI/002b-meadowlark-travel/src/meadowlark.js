@@ -59,8 +59,13 @@ app.use(handlers.serverError
   res.send("500 - Server error");
 } */);
 
-app.listen(port, () => {
-  console.log(
-    `esto ta andando perri en el puerto ${port}\n` + `cortalo con coca o ctrl-c`
-  );
-});
+if(require.main == module){
+  app.listen(port, () => {
+    console.log(
+        `esto ta andando perri en http://localhost:${port}/\n` +
+          `cortalo con coca o ctrl-c`
+    );
+})
+} else {
+  module.exports = app;
+}
