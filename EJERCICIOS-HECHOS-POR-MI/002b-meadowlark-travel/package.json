@@ -13,7 +13,8 @@
     "puppeteer": "^23.0.2"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "npx eslint ./src/meadowlark.js ./src"
   },
   "prettier": {
     "tabWidth": 4
