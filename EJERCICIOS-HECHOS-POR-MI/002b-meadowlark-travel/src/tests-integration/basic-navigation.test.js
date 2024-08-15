@@ -28,6 +28,6 @@ test("about to home page", async () => {
         page.click('[id-identificador-test-puppeteer="home"]')
     ]);
     expect(page.url()).toBe(`http://localhost:${port}/`);
-
+    console.log("cachilo");
     await browser.close();
 });
