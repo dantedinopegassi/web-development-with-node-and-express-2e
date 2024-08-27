@@ -27,6 +27,7 @@ app.engine(
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
+app.disable('x-powered-by');
 
 /******************************************** /
 /  Asi se refactoriza codigo para             /
